@@ -13,11 +13,11 @@ extension CoreDataFeedStore: FeedStore {
 
     public func insert(_ feed: [LocalFeedImage], timestamp: Date) throws {
         try performSync { context in
-            Reesult {
+            Result {
                 let managedCache = try ManagedCache.newUniqueInstance(in: context)
                 managedCache.timestamp = timestamp
                 managedCache.feed = ManagedFeedImage.images(from: feed, in: context)
-                try context.save
+                try context.save()
             }
         }
     }

@@ -31,7 +31,7 @@ class CoreDataFeedImageDataStoreTests: XCTestCase {
     }
 
     private func expect(_ sut: CoreDataFeedStore, toCompleteRetrievalWith expectedResult: Result<Data?, Error>, for url: URL, file: StaticString = #file, line: UInt = #line) {
-        let receivedResult = Result { try sut.receive(dataForURL: url) }
+        let receivedResult = Result { try sut.retrieve(dataForURL: url) }
 
         switch (receivedResult, expectedResult) {
             case let (.success(receivedData), .success(expectedData)):
