@@ -5,20 +5,26 @@ import PackageDescription
 
 let package = Package(
     name: "EssentialFeed",
-    platforms: [.iOS(.v13), .macOS(.v10_15)],
+    defaultLocalization: "en",
+    platforms: [.iOS(.v15), .macOS(.v10_15)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "EssentialFeed",
-            targets: ["EssentialFeed"]),
+            targets: ["EssentialFeed"]
+        ),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "EssentialFeed"),
+            name: "EssentialFeed",
+            resources: [.process("Resources")]
+        ),
         .testTarget(
             name: "EssentialFeedTests",
-            dependencies: ["EssentialFeed"]),
+            dependencies: ["EssentialFeed"],
+            resources: [.process("Resources")]
+        )
     ]
 )

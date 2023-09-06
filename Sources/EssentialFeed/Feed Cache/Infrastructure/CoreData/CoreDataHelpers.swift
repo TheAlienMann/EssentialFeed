@@ -8,7 +8,7 @@ extension NSPersistentContainer {
         container.persistentStoreDescriptions = [description]
 
         var loadError: Swift.Error?
-        container.loadPersistentStores(completionHandler: { loadError = $1 })
+        container.loadPersistentStores { loadError = $1 }
         try loadError.map { throw $0 }
 
         return container
@@ -16,9 +16,11 @@ extension NSPersistentContainer {
 }
 
 extension NSManagedObjectModel {
-    static func with(name: String, in bundle: Bundle) -> NSManagedObjectModel? {
-        bundle
-            .url(forResource: name, withExtension: "momd")
-            .flatMap { NSManagedObjectModel(contentsOf: $0) }
+    static func with(name: String) -> NSManagedObjectModel? {
+      Bundle.module.url(forResource: name, withExtension: "momd")
+        .flatMap { NSManagedObjectModel(contentsOf: $0) }
+//      bundle
+//            .url(forResource: name, withExtension: "momd")
+//            .flatMap { NSManagedObjectModel(contentsOf: $0) }
     }
 }

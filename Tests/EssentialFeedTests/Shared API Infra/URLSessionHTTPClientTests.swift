@@ -23,7 +23,8 @@ class URLSessionHTTPClientTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
 
-    func test_cancelGetFromURLTask_cancelsURLRequest() {
+  //FIXME: This one failed once, find out why.
+  func test_cancelGetFromURLTask_cancelsURLRequest() {
         let exp = expectation(description: "wait for request.")
         URLProtocolStub.observeRequests(observer: { _ in exp.fulfill() })
 
