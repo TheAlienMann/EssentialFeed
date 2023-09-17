@@ -1,8 +1,1 @@
-/* 
-  Localizable.strings
-  
-
-  Created by Mohamad Rahmani on 9/6/23.
-  
-*/
 "GENERIC_CONNECTION_ERROR" = "Couldn't connect to server";
