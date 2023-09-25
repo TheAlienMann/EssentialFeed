@@ -1,5 +1,5 @@
 import Foundation
 
-protocol FeedImageDataLoader {
+public protocol FeedImageDataLoader {
     func loadImageData(from url: URL) throws -> Data
 }
